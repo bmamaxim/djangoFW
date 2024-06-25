@@ -12,6 +12,9 @@ class UserSerializer(serializers.ModelSerializer):
     habit = SerializerMethodField()
 
     def get_habit(self, user):
+        """
+        Метод выводит количество привычек пользователя
+        """
         return Habit.objects.filter(user=user).count()
 
     class Meta:

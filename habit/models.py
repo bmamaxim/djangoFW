@@ -21,7 +21,7 @@ class Habit(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Пользователь", on_delete=models.CASCADE, **NULLABLE)
     action = models.CharField(verbose_name="Привычки", max_length=500, help_text="Опишите свою привычку", **NULLABLE)
     place = models.CharField(verbose_name="Место", max_length=200, help_text="Опишите место выполнения", **NULLABLE)
-    time = models.DateTimeField(verbose_name="Время", help_text="Начало выполнения", **NULLABLE)
+    time = models.TimeField(verbose_name="Время", help_text="Начало выполнения", **NULLABLE)
     duration = models.TimeField(verbose_name="Продолжительность", help_text="Время на выполнение", **NULLABLE)
     periodicity = models.CharField(max_length=50, choices=PERIOD, default=PERIOD_DAILY, verbose_name="Периодичность",
                                    help_text="Частота выполнения", **NULLABLE)
