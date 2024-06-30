@@ -17,7 +17,7 @@ from users.views import (
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path("", UserListAPIView.as_view(permission_classes=(AllowAny,)), name="users"),
+    path("", UserListAPIView.as_view(), name="users"),
     path("register/", UserCreateAPIView.as_view(), name="register"),
     path("<int:pk>/", UserRetrieveAPIView.as_view(), name="user-view"),
     path("update/<int:pk>/", UserUpdateAPIView.as_view(), name="user-update"),

@@ -15,6 +15,7 @@ class UserListAPIView(generics.ListAPIView):
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (AllowAny,)
     pagination_class = UsersPaginator
 
 

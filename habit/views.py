@@ -26,6 +26,9 @@ class HabitListAPIView(generics.ListAPIView):
     queryset = Habit.objects.all()
     pagination_class = HabitPaginator
 
+    def get_queryset(self):
+        return Habit.objects.filter(user=self.request.user)
+
 
 class HabitCreateAPIView(generics.CreateAPIView):
     """
