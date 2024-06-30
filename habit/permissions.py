@@ -7,7 +7,7 @@ class IsUser(permissions.BasePermission):
     """
 
     def has_object_permission(self, request, view, obj):
-
-        if obj.email == request.user.email:
+        message = "доступ только для пользователя."
+        if obj.user == request.user:
             return True
         return False

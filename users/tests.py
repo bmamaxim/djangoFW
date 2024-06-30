@@ -9,6 +9,7 @@ class UserTestCase(APITestCase):
     """
     Класс тестирование пользователя
     """
+
     def setUp(self) -> None:
         self.user = User.objects.create(email="testoff@mail.ru", password="llleike11")
         self.client.force_authenticate(user=self.user)
@@ -42,11 +43,26 @@ class UserTestCase(APITestCase):
             "first_name": "test",
         }
         response = self.client.patch(url, data)
+        print("test_user_update", response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
             response.json(),
             {
                 "first_name": "test",
+                "tg_nick": None,
+                "email": "testoff@mail.ru",
+                "habit": 0,
+                "password": "llleike11",
             },
         )
+
+    def test_user_delete(self):
+        """
+        Тест удалить пользователя
+        """
+        url = reverse("users:user-delete", args=(self.user.pk,))
+        response = self.client.delete(url)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(User.objects.all().count(), 0)

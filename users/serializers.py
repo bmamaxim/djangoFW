@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     """
     Класс сериализатор модели Пользователя
     """
+
     habit = SerializerMethodField()
 
     def get_habit(self, user):
@@ -19,4 +20,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = "__all__" # ('first_name', 'email', 'avatar', 'habit', 'password',)
+        fields = (
+            "first_name",
+            "tg_nick",
+            "email",
+            "habit",
+            "password",
+        )
