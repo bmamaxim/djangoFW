@@ -43,7 +43,6 @@ class UserTestCase(APITestCase):
             "first_name": "test",
         }
         response = self.client.patch(url, data)
-        print("test_user_update", response.json())
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(

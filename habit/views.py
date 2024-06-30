@@ -11,6 +11,7 @@ class HomeListAPIView(generics.ListAPIView):
     """
     Класс вывода привычек с флагом публичные.
     """
+
     serializer_class = HabitSerializer
     queryset = Habit.objects.filter(publication_sign=True)
     permission_classes = (AllowAny,)

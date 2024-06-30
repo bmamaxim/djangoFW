@@ -29,12 +29,28 @@ class HabitsTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertTrue(Habit.objects.all().exists())
 
-    def test_list_habit(self):
+    def test_home_list(self):
         """
-        Тест список привычек.
+        Тест список привычек в публичном доступе.
         :return:
         """
         response = self.client.get("/habit/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.json(),
+            {
+                "count": 0,
+                "next": None,
+                "previous": None,
+                "results": [],
+            },
+        )
+
+    def test_habit_list(self):
+        """
+        Список привычек пользователя
+        """
+        response = self.client.get("/habit/habits/")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(),

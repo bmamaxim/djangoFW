@@ -24,14 +24,14 @@ def send_tg_message():
         send_message = False
 
         if habit.periodicity == Habit.PERIOD_DAILY:
-                send_message = (datetime_now - last_try_date).days >= 1
+            send_message = (datetime_now - last_try_date).days >= 1
         elif habit.periodicity == Habit.EVERY_OTHER_DAYS:
-                send_message = (datetime_now - last_try_date).days >= 2
+            send_message = (datetime_now - last_try_date).days >= 2
         elif habit.periodicity == Habit.WEEKEND:
-                send_message = (
-                    datetime_now.weekday() in (6, 7)
-                    and (datetime_now - last_try_date).days >= 1
-                )
+            send_message = (
+                datetime_now.weekday() in (6, 7)
+                and (datetime_now - last_try_date).days >= 1
+            )
 
         if send_message:
             if time_now.time() >= habit.time:

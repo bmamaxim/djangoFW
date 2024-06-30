@@ -14,7 +14,9 @@ from habit.views import (
 app_name = HabitConfig.name
 
 urlpatterns = [
-    path("", HomeListAPIView.as_view(permission_classes=(AllowAny,)), name="home-habits"),
+    path(
+        "", HomeListAPIView.as_view(permission_classes=(AllowAny,)), name="home-habits"
+    ),
     path("habits/", HabitListAPIView.as_view(), name="habits"),
     path("create/", HabitCreateAPIView.as_view(), name="create"),
     path("<int:pk>/", HabitRetrieveAPIView.as_view(), name="habit-view"),
