@@ -5,6 +5,8 @@ from habit.models import Habit
 from habit.paginations import HabitPaginator
 from habit.serializers import HabitSerializer
 from habit.permissions import IsUser
+from habit.services import send_telegram_message
+from rest_framework.response import Response
 
 
 class HomeListAPIView(generics.ListAPIView):
@@ -48,6 +50,14 @@ class HabitCreateAPIView(generics.CreateAPIView):
         habit = serializer.save()
         habit.user = self.request.user
         habit.save()
+
+    def post(self, request, *args, **kwargs):
+        user = self.request.user
+        message = "привычка создана"
+        if user.tg_nick:
+            send_telegram_message(user.tg_nick, message)
+
+        return Response({"message": message})
 
 
 class HabitRetrieveAPIView(generics.RetrieveAPIView):
