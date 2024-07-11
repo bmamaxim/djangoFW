@@ -1,0 +1,9 @@
+**
+!config
+!materials
+!users
+!manage.py
+!poetry.lock
+!pyproject.toml
+!users_data.json
+!habit_data.json

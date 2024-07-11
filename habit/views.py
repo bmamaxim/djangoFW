@@ -67,7 +67,7 @@ class HabitRetrieveAPIView(generics.RetrieveAPIView):
 
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    pagination_class = (IsUser,)
+    permission_classes = (IsUser,)
 
 
 class HabitUpdateAPIView(generics.UpdateAPIView):
