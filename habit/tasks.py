@@ -18,14 +18,12 @@ def send_tg_message():
     """
 
     datetime_now = timezone.now()
-    print(datetime_now)
-    # time_now = datetime.datetime.now(datetime.timezone.utc)
 
     habits = [Habit.objects.all()]
     for habit in habits:
         last_try_date = habit.last_try or datetime_now - datetime.timedelta(
             days=999
-        )  # Используем очень старую дату, если нет last_try_date
+        )
         send_message = False
 
         if habit.periodicity == Habit.PERIOD_DAILY:
