@@ -7,6 +7,7 @@ class HabitSerializer(serializers.ModelSerializer):
     """
     Класс сериализатор модели привычки.
     """
+
     class Meta:
         model = Habit
-        fields = '__all__'
+        exclude = ("last_try",)

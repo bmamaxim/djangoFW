@@ -1,0 +1,36 @@
+[
+  {
+    "model": "habit.habit",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "action": "test",
+      "place": "test",
+      "time": "12:00:00",
+      "duration": null,
+      "periodicity": "daily",
+      "publication_sign": false,
+      "associated_habit": 3,
+      "reward": null,
+      "nice_habit": false,
+      "last_try": "2024-06-29T10:58:00.135Z"
+    }
+  },
+  {
+    "model": "habit.habit",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "action": "яЁшт√ўър2",
+      "place": "ьхёЄю",
+      "time": "14:00:00",
+      "duration": null,
+      "periodicity": "weekend",
+      "publication_sign": false,
+      "associated_habit": null,
+      "reward": null,
+      "nice_habit": false,
+      "last_try": "2024-06-30T08:35:07.840Z"
+    }
+  }
+]
