@@ -19,7 +19,7 @@ def send_tg_message():
 
     datetime_now = timezone.now()
 
-    habits = [Habit.objects.all()]
+    habits = Habit.objects.all()
     for habit in habits:
         last_try_date = habit.last_try or datetime_now - datetime.timedelta(
             days=999
