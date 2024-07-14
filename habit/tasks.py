@@ -18,23 +18,21 @@ def send_tg_message():
     """
 
     datetime_now = timezone.now()
-
+    print(datetime_now.time())
     habits = Habit.objects.all()
     for habit in habits:
 
-        habit.last_try = datetime_now - datetime.timedelta(
-            days=999
-        )
+        last_try = habit.last_try
         send_message = False
 
         if habit.periodicity == Habit.PERIOD_DAILY:
-            send_message = (datetime_now - habit.last_try).days >= 1
+            send_message = True
         elif habit.periodicity == Habit.EVERY_OTHER_DAYS:
-            send_message = (datetime_now - habit.last_try).days >= 2
+            send_message = (datetime_now - last_try).days >= 2
         elif habit.periodicity == Habit.WEEKEND:
             send_message = (
                     datetime_now.weekday() in (6, 7)
-                    and (datetime_now - habit.last_try).days >= 1
+                    and (datetime_now - last_try).days >= 1
             )
 
         if send_message and (datetime_now.time() >= habit.time):
