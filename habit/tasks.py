@@ -26,7 +26,7 @@ def send_tg_message():
         send_message = False
 
         if habit.periodicity == Habit.PERIOD_DAILY:
-            send_message = True
+            send_message = (datetime_now - last_try).days >= 1
         elif habit.periodicity == Habit.EVERY_OTHER_DAYS:
             send_message = (datetime_now - last_try).days >= 2
         elif habit.periodicity == Habit.WEEKEND:
